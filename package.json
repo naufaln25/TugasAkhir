@@ -8,6 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
+    "lint-fix": "eslint . --fix", 
     "emu" : "~/Android/Sdk/emulator/emulator -avd Pixel_4a_API_30"
   },
   "dependencies": {

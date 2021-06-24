@@ -1,112 +1,170 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, {Component} from 'react';
+import {Text, StyleSheet, View, Image} from 'react-native';
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
+export default class App extends Component {
+  render() {
+    return (
+      <View style={{backgroundColor: 'grey', flex: 1}}>
+        {/* Header */}
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            height: 54,
+            backgroundColor: 'green',
+            flexDirection: 'row',
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+          <View
+            style={{
+              width: 54,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={require('./src/img/logo/menu-white.png')}
+              style={{width: 22, height: 22, marginLeft: 6}}
+            />
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}>
+              VAMOS FC
+            </Text>
+          </View>
+          <View
+            style={{
+              width: 54,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={require('./src/img/logo/teams_tmlogo_tsx1530680365.png')}
+              style={{width: 34, height: 34, marginRight: 8}}
+            />
+          </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+        {/* Content */}
+        <View style={{flex: 1, backgroundColor: 'white'}}>
+          {/* Headlines */}
+          <View
+            style={{
+              backgroundColor: 'white',
+              width: 335,
+              height: 520,
+              marginLeft: 30,
+              marginRight: 30,
+              marginTop: 30,
+              marginBottom: 30,
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+            }}>
+            <Image
+              source={require('./src/img/img/166397159_124444879652655_7974507247414517410_n.jpg')}
+              style={{
+                width: 335,
+                height: 520,
+                borderBottomLeftRadius: 20,
+                borderBottomRightRadius: 20,
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20,
+              }}
+            />
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 24,
+                fontWeight: 'bold',
+                marginLeft: 20,
+                marginRight: 20,
+                position: 'absolute',
+                top: 350,
+              }}>
+              Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang Pertandingan
+              Pertama
+            </Text>
+          </View>
+        </View>
 
-export default App;
+        {/* Bottom Navigation */}
+        <View
+          style={{
+            height: 58,
+            backgroundColor: 'white',
+            flexDirection: 'row',
+            borderTopWidth: 0.5,
+            borderTopColor: 'lightgrey',
+          }}>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={require('./src/img/logo/teams_tmlogo_tsx1530680365.png')}
+              style={{width: 24, height: 24}}
+            />
+            <Text
+              style={{
+                fontSize: 10,
+                color: 'black',
+                marginTop: 4,
+                fontWeight: 'bold',
+              }}>
+              HOME
+            </Text>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={require('./src/img/logo/stadium_32px.png')}
+              style={{width: 28, height: 28}}
+            />
+            <Text style={{fontSize: 10, color: '#545454', marginTop: 4}}>
+              MATCH
+            </Text>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={require('./src/img/logo/jersey_24px.png')}
+              style={{width: 26, height: 26}}
+            />
+            <Text style={{fontSize: 10, color: '#545454', marginTop: 4}}>
+              TEAM
+            </Text>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={require('./src/img/logo/shopping-cart.png')}
+              style={{width: 26, height: 26}}
+            />
+            <Text style={{fontSize: 10, color: '#545454', marginTop: 4}}>
+              STORE
+            </Text>
+          </View>
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({});
