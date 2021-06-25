@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, StyleSheet, View, Image} from 'react-native';
+import {Text, StyleSheet, View, Image, ScrollView} from 'react-native';
 
 export default class App extends Component {
   render() {
@@ -47,48 +47,83 @@ export default class App extends Component {
         </View>
 
         {/* Content */}
-        <View style={{flex: 1, backgroundColor: 'white'}}>
-          {/* Headlines */}
-          <View
-            style={{
-              backgroundColor: 'white',
-              width: 335,
-              height: 520,
-              marginLeft: 30,
-              marginRight: 30,
-              marginTop: 30,
-              marginBottom: 30,
-              borderBottomLeftRadius: 20,
-              borderBottomRightRadius: 20,
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
-            }}>
-            <Image
-              source={require('./src/img/img/166397159_124444879652655_7974507247414517410_n.jpg')}
+        <ScrollView>
+          <View style={{flex: 1, backgroundColor: 'white'}}>
+            {/* Headlines */}
+            <View
               style={{
+                backgroundColor: 'white',
                 width: 335,
                 height: 520,
-                borderBottomLeftRadius: 20,
-                borderBottomRightRadius: 20,
-                borderTopLeftRadius: 20,
-                borderTopRightRadius: 20,
-              }}
-            />
-            <Text
-              style={{
-                color: 'white',
-                fontSize: 24,
-                fontWeight: 'bold',
-                marginLeft: 20,
-                marginRight: 20,
-                position: 'absolute',
-                top: 350,
+                margin: 30,
+                borderRadius: 20,
               }}>
-              Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang Pertandingan
-              Pertama
-            </Text>
+              <Image
+                source={require('./src/img/img/166397159_124444879652655_7974507247414517410_n.jpg')}
+                style={{
+                  width: 335,
+                  height: 520,
+                  borderBottomLeftRadius: 20,
+                  borderBottomRightRadius: 20,
+                  borderTopLeftRadius: 20,
+                  borderTopRightRadius: 20,
+                }}
+              />
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 24,
+                  fontWeight: 'bold',
+                  marginLeft: 20,
+                  marginRight: 20,
+                  position: 'absolute',
+                  top: 350,
+                }}>
+                Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang Pertandingan
+                Pertama
+              </Text>
+            </View>
+
+            {/* Bagian News */}
+            <View>
+              <View
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Text
+                  style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>
+                  NEWS
+                </Text>
+                <Text style={{marginRight: 20, marginTop: 5}}>
+                  Show More >>
+                </Text>
+              </View>
+              <View
+                style={{
+                  backgroundColor: 'grey',
+                  width: 352,
+                  height: 200,
+                  marginRight: 20,
+                  marginLeft: 20,
+                  borderRadius: 15,
+                  marginTop: 10,
+                }}
+              />
+              <View>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 25,
+                    marginRight: 25,
+                    fontWeight: 'bold',
+                  }}>
+                  Ini Judul Berita Lagi, Banyak amat yaa beritanya, masa isinya
+                  berita doang
+                </Text>
+              </View>
+            </View>
           </View>
-        </View>
+        </ScrollView>
 
         {/* Bottom Navigation */}
         <View
