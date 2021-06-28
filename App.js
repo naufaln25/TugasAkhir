@@ -50,57 +50,243 @@ export default class App extends Component {
         <ScrollView>
           <View style={{flex: 1, backgroundColor: 'white'}}>
             {/* Headlines */}
-            <View
-              style={{
-                backgroundColor: 'white',
-                width: 335,
-                height: 520,
-                margin: 30,
-                borderRadius: 20,
-              }}>
-              <Image
-                source={require('./src/img/img/166397159_124444879652655_7974507247414517410_n.jpg')}
+            <ScrollView horizontal>
+              <View
                 style={{
+                  backgroundColor: 'white',
                   width: 335,
                   height: 520,
-                  borderBottomLeftRadius: 20,
-                  borderBottomRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                  borderTopRightRadius: 20,
-                }}
-              />
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 24,
-                  fontWeight: 'bold',
-                  marginLeft: 20,
-                  marginRight: 20,
-                  position: 'absolute',
-                  top: 350,
+                  margin: 30,
+                  borderRadius: 20,
                 }}>
-                Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang Pertandingan
-                Pertama
-              </Text>
-            </View>
+                <Image
+                  source={require('./src/img/img/166397159_124444879652655_7974507247414517410_n.jpg')}
+                  style={{
+                    width: 335,
+                    height: 520,
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
+                  }}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                    marginLeft: 20,
+                    marginRight: 20,
+                    position: 'absolute',
+                    top: 350,
+                  }}>
+                  Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang
+                  Pertandingan Pertama
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  width: 335,
+                  height: 520,
+                  margin: 30,
+                  borderRadius: 20,
+                }}>
+                <Image
+                  source={require('./src/img/img/166397159_124444879652655_7974507247414517410_n.jpg')}
+                  style={{
+                    width: 335,
+                    height: 520,
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
+                  }}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                    marginLeft: 20,
+                    marginRight: 20,
+                    position: 'absolute',
+                    top: 350,
+                  }}>
+                  Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang
+                  Pertandingan Pertama
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  width: 335,
+                  height: 520,
+                  margin: 30,
+                  borderRadius: 20,
+                }}>
+                <Image
+                  source={require('./src/img/img/166397159_124444879652655_7974507247414517410_n.jpg')}
+                  style={{
+                    width: 335,
+                    height: 520,
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
+                  }}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                    marginLeft: 20,
+                    marginRight: 20,
+                    position: 'absolute',
+                    top: 350,
+                  }}>
+                  Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang
+                  Pertandingan Pertama
+                </Text>
+              </View>
+            </ScrollView>
+
+            {/* Bagian Upcoming Match */}
+            <ScrollView horizontal>
+              <View
+                style={{
+                  borderColor: 'lightslategrey',
+                  borderWidth: 1,
+                  width: 352,
+                  height: 130,
+                  marginRight: 20,
+                  marginLeft: 20,
+                  borderRadius: 15,
+                  marginTop: 10,
+                }}>
+                <Text style={{textAlign: 'center', marginTop: 5}}>
+                  Pro Futsal League, Matchday 15 | 25/06/21
+                </Text>
+                <View
+                  style={{
+                    paddingHorizontal: 40,
+                    paddingVertical: 15,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View
+                    style={{width: 50, height: 50, backgroundColor: 'grey'}}>
+                    <Image />
+                  </View>
+                  <Text style={{fontSize: 22, fontWeight: 'bold'}}>2</Text>
+                  <Text>FT</Text>
+                  <Text style={{fontSize: 22, fontWeight: 'bold'}}>2</Text>
+                  <View
+                    style={{width: 50, height: 50, backgroundColor: 'grey'}}>
+                    <Image />
+                  </View>
+                </View>
+              </View>
+
+              <View
+                style={{
+                  borderColor: 'lightslategrey',
+                  borderWidth: 1,
+                  width: 352,
+                  height: 130,
+                  marginRight: 20,
+                  marginLeft: 20,
+                  borderRadius: 15,
+                  marginTop: 10,
+                }}>
+                <Text style={{textAlign: 'center', marginTop: 5}}>
+                  Pro Futsal League, Matchday 15 | 25/06/21
+                </Text>
+                <View
+                  style={{
+                    paddingHorizontal: 40,
+                    paddingVertical: 15,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View
+                    style={{width: 50, height: 50, backgroundColor: 'grey'}}>
+                    <Image />
+                  </View>
+                  <Text style={{fontSize: 22, fontWeight: 'bold'}}>3</Text>
+                  <Text>FT</Text>
+                  <Text style={{fontSize: 22, fontWeight: 'bold'}}>1</Text>
+                  <View
+                    style={{width: 50, height: 50, backgroundColor: 'grey'}}>
+                    <Image />
+                  </View>
+                </View>
+              </View>
+
+              <View
+                style={{
+                  borderColor: 'lightslategrey',
+                  borderWidth: 1,
+                  width: 352,
+                  height: 130,
+                  marginRight: 20,
+                  marginLeft: 20,
+                  borderRadius: 15,
+                  marginTop: 10,
+                }}>
+                <Text style={{textAlign: 'center', marginTop: 5}}>
+                  Pro Futsal League, Matchday 15 | 25/06/21
+                </Text>
+                <View
+                  style={{
+                    paddingHorizontal: 40,
+                    paddingVertical: 15,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View
+                    style={{width: 50, height: 50, backgroundColor: 'grey'}}>
+                    <Image />
+                  </View>
+                  <Text style={{fontSize: 22, fontWeight: 'bold'}} />
+                  <Text>Sabtu, 26/06/21</Text>
+                  <Text style={{fontSize: 22, fontWeight: 'bold'}} />
+                  <View
+                    style={{width: 50, height: 50, backgroundColor: 'grey'}}>
+                    <Image />
+                  </View>
+                </View>
+              </View>
+            </ScrollView>
 
             {/* Bagian News */}
-            <View>
+            <View
+              style={{
+                marginBottom: 20,
+                borderTopWidth: 0.5,
+                borderTopColor: 'lightgrey',
+              }}>
               <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text
-                  style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>
-                  NEWS
-                </Text>
-                <Text style={{marginRight: 20, marginTop: 5}}>
-                  Show More >>
-                </Text>
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginTop: 15,
+                  paddingHorizontal: 21,
+                }}>
+                <Text style={{fontSize: 20, fontWeight: 'bold'}}>NEWS</Text>
+                <Text style={{marginTop: 5}}>Show More >></Text>
               </View>
               <View
                 style={{
                   backgroundColor: 'grey',
                   width: 352,
-                  height: 200,
+                  height: 180,
                   marginRight: 20,
                   marginLeft: 20,
                   borderRadius: 15,
@@ -121,6 +307,116 @@ export default class App extends Component {
                   berita doang
                 </Text>
               </View>
+              <View
+                style={{
+                  backgroundColor: 'grey',
+                  width: 352,
+                  height: 180,
+                  marginRight: 20,
+                  marginLeft: 20,
+                  marginTop: 10,
+                  borderRadius: 15,
+                }}
+              />
+              <View>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 25,
+                    marginRight: 25,
+                    fontWeight: 'bold',
+                  }}>
+                  Ini Judul Berita Lagi, Banyak amat yaa beritanya, masa isinya
+                  berita doang
+                </Text>
+              </View>
+            </View>
+
+            {/* Bagian Store Front */}
+            <View style={{marginBottom: 30}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  paddingHorizontal: 21,
+                }}>
+                <Text style={{fontWeight: 'bold', fontSize: 20}}>STORE</Text>
+                <Text style={{marginTop: 5}}>Show More >></Text>
+              </View>
+              <ScrollView horizontal>
+                <View
+                  style={{
+                    backgroundColor: 'grey',
+                    width: 352,
+                    height: 180,
+                    marginRight: 20,
+                    marginLeft: 20,
+                    borderRadius: 15,
+                    marginTop: 10,
+                  }}>
+                  <Image />
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontSize: 18,
+                      fontWeight: 'bold',
+                      marginLeft: 15,
+                      position: 'relative',
+                      top: 130,
+                    }}>
+                    The New Home Shirt 2021
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    backgroundColor: 'grey',
+                    width: 352,
+                    height: 180,
+                    marginRight: 20,
+                    marginLeft: 20,
+                    borderRadius: 15,
+                    marginTop: 10,
+                  }}>
+                  <Image />
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontSize: 18,
+                      fontWeight: 'bold',
+                      marginLeft: 15,
+                      position: 'relative',
+                      top: 130,
+                    }}>
+                    The New Away Shirt 2021
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    backgroundColor: 'grey',
+                    width: 352,
+                    height: 180,
+                    marginRight: 20,
+                    marginLeft: 20,
+                    borderRadius: 15,
+                    marginTop: 10,
+                  }}>
+                  <Image />
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontSize: 18,
+                      fontWeight: 'bold',
+                      marginLeft: 15,
+                      position: 'relative',
+                      top: 130,
+                    }}>
+                    The New Training Kit 2021
+                  </Text>
+                </View>
+              </ScrollView>
             </View>
           </View>
         </ScrollView>
