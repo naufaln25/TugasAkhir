@@ -8,7 +8,7 @@ const Home = () => {
       <View
         style={{
           height: 54,
-          backgroundColor: 'green',
+          backgroundColor: '#0d7250',
           flexDirection: 'row',
         }}>
         <View
