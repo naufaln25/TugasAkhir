@@ -1,4 +1,4 @@
-export const color = {
+export const colors = {
   default: '#0d7250',
   white: '#ffffff',
   disable: '#A5B1C2',

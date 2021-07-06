@@ -22,7 +22,7 @@ const Router = () => {
         component={Home}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Login"
         component={Login}
         options={{headerShown: false}}
@@ -31,7 +31,7 @@ const Router = () => {
         name="Register"
         component={Register}
         options={{headerShown: false}}
-      /> */}
+      />
     </Stack.Navigator>
   );
 };

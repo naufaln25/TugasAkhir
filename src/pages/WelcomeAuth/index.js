@@ -1,29 +1,31 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
 import ActionButton from './ActionButton';
+import {Button} from '../../components';
 
-const WelcomeAuth = () => {
+const WelcomeAuth = ({navigation}) => {
+  const linkToGo = screen => {
+    navigation.navigate(screen);
+  };
+
   return (
     <View style={styles.wrapper}>
       <ImageBackground
         source={require('../../assets/img/WelcomeAuth.png')}
         style={styles.imgBackground}>
         <View>
-          <Image
+          {/* <Image
             source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
             style={styles.imageTitle}
-          />
+          /> */}
           <Text style={styles.title}>Welcome To Vamos FC Futsal Fan App</Text>
           <Text style={styles.desc}>
-            Lihat langsung semua informasi tentang Vamos FC dan Semua Profile
-            Pemain
+            Ayo jadi fans nomor 1 Vamos FC. Cari berita terbaru dan informasi
+            seputar Vamos FC Mataram
           </Text>
-          <View>
-            <ActionButton title="Get Started" />
-            <ActionButton title="Login / Sign Up" />
-          </View>
-          <View>
-            <Text style={styles.textCopy}>Copyright Kelompok 5 06TPLP12</Text>
+          <View style={styles.btnWrapper}>
+            <Button title="Get Started" onPress={() => linkToGo('Home')} />
+            <ActionButton title="Sign In" onPress={() => linkToGo('Login')} />
           </View>
         </View>
       </ImageBackground>
@@ -41,17 +43,18 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 320,
   },
   title: {
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 26,
     width: 250,
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
     marginLeft: 'auto',
     marginRight: 'auto',
-    top: -30,
+    top: 5,
   },
   imageTitle: {
     marginRight: 'auto',
@@ -64,14 +67,13 @@ const styles = StyleSheet.create({
   desc: {
     color: 'white',
     textAlign: 'center',
-    paddingHorizontal: 40,
-    marginTop: 10,
+    paddingHorizontal: 30,
+    marginTop: 15,
+    top: 20,
   },
-  textCopy: {
-    color: 'white',
-    fontSize: 10,
-    top: 150,
-    textAlign: 'center',
+  btnWrapper: {
+    marginHorizontal: 20,
+    marginTop: 80,
   },
 });
 
