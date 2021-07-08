@@ -1,8 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors} from '../../../utills/colors';
+import ButtonIcon from './ButtonIcon';
 
-const Button = ({title, onPress}) => {
+const Button = ({title, onPress, type, name}) => {
+  if (type === 'icon') {
+    return <ButtonIcon name={name} onPress={onPress} />;
+  }
+
   return (
     <View>
       <TouchableOpacity style={styles.btn} onPress={onPress}>

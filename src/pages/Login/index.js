@@ -1,33 +1,54 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Input, Button, Link} from '../../components';
-import {IconBack} from '../../assets';
+import {useDispatch, useSelector} from 'react-redux';
+import {Button, Input, Link} from '../../components';
+import {setForm} from '../../redux';
 
 const Login = ({navigation}) => {
+  const {form} = useSelector(state => state.LoginReducer);
+  const dispatch = useDispatch();
+
   const linkToGo = screen => {
     navigation.navigate(screen);
+  };
+
+  const sendData = () => {
+    console.log('Data yang dikirim : ', form);
+  };
+
+  const onInputChange = (value, input) => {
+    // setForm({
+    //   ...form,
+    //   [input]: value,
+    // });
+    dispatch(setForm(input, value));
   };
 
   return (
     <View>
       {/* Header */}
       <View style={styles.header}>
-        <IconBack
-          width={25}
-          height={25}
-          onPress={() => linkToGo('WelcomeAuth')}
-        />
+        <Button type="icon" name="back" onPress={() => navigation.goBack()} />
         <Text style={styles.Title}>Sign In</Text>
         <View />
       </View>
 
       {/* Content */}
       <View style={styles.inputWrapper}>
-        <Input placeholder="Username / Email" />
+        <Input
+          placeholder="Username"
+          value={form.fullName}
+          onChangeText={value => onInputChange(value, 'userName')}
+        />
         <View style={styles.space(20)} />
-        <Input placeholder="Password" />
+        <Input
+          placeholder="Password"
+          value={form.password}
+          onChangeText={value => onInputChange(value, 'password')}
+          secureTextEntry={true}
+        />
         <View style={styles.space(30)} />
-        <Button title="Sign In" />
+        <Button title="Sign In" onPress={sendData} />
         <View style={styles.signWrapper}>
           <Text>Belum Memiliki Akun ? </Text>
           <Link title="Sign Up" onPress={() => linkToGo('Register')} />
