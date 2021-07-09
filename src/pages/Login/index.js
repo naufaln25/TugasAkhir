@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, Input, Link} from '../../components';
 import {setForm} from '../../redux';
+import {colors} from '../../utills/colors';
 
 const Login = ({navigation}) => {
   const {form} = useSelector(state => state.LoginReducer);
@@ -51,7 +52,11 @@ const Login = ({navigation}) => {
         <Button title="Sign In" onPress={sendData} />
         <View style={styles.signWrapper}>
           <Text>Belum Memiliki Akun ? </Text>
-          <Link title="Sign Up" onPress={() => linkToGo('Register')} />
+          <Link
+            title="Sign Up"
+            onPress={() => linkToGo('Register')}
+            style={styles.LinkToGo}
+          />
         </View>
       </View>
     </View>
@@ -84,6 +89,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     left: -5,
+  },
+  LinkToGo: {
+    color: colors.default,
+    fontWeight: 'bold',
   },
   space: value => {
     return {

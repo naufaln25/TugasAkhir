@@ -1,7 +1,19 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View, Image} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {NavMatch, NavStore, NavTeam} from '../../assets';
+import NavHome from '../../assets/logo/teams_tmlogo_tsx1530680365.png';
 
-const Teams = () => {
+const Teams = ({navigation}) => {
+  const LinkToGo = screen => {
+    navigation.navigate(screen);
+  };
   return (
     <View style={styles.wrapper}>
       {/* Header */}
@@ -13,7 +25,7 @@ const Teams = () => {
           />
         </View>
         <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>ALL MATCH</Text>
+          <Text style={styles.headerTitle}>TEAMS</Text>
         </View>
         <View style={styles.headerRight}>
           <Image
@@ -24,42 +36,71 @@ const Teams = () => {
       </View>
 
       {/* Content */}
-      <ScrollView>
-        <View style={styles.contentWrapper}>
-          <Text>Ini Content</Text>
-        </View>
+      <ScrollView style={styles.contentWrapper}>
+        <Text style={styles.position}>Goalkeeper</Text>
+        <TouchableOpacity style={styles.playerWrapper}>
+          <View style={styles.playerImage}>
+            <Image />
+          </View>
+          <Text style={styles.kitNumber}>1</Text>
+          <Text style={styles.playerName}>Muhammad Al Bagir</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.position}>Anchor</Text>
+        <TouchableOpacity style={styles.playerWrapper}>
+          <View style={styles.playerImage}>
+            <Image />
+          </View>
+          <Text style={styles.kitNumber}>1</Text>
+          <Text style={styles.playerName}>Muhammad Al Bagir</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.position}>Flank</Text>
+        <TouchableOpacity style={styles.playerWrapper}>
+          <View style={styles.playerImage}>
+            <Image />
+          </View>
+          <Text style={styles.kitNumber}>1</Text>
+          <Text style={styles.playerName}>Muhammad Al Bagir</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.position}>Pivot</Text>
+        <TouchableOpacity style={styles.playerWrapper}>
+          <View style={styles.playerImage}>
+            <Image />
+          </View>
+          <Text style={styles.kitNumber}>1</Text>
+          <Text style={styles.playerName}>Muhammad Al Bagir</Text>
+        </TouchableOpacity>
+        <View style={styles.space} />
       </ScrollView>
 
       {/* Bottom Navigation */}
       <View style={styles.navWrapper}>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
-            style={styles.iconNav}
-          />
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Home')}>
+          <Image source={NavHome} style={styles.iconNav} />
           <Text style={styles.iconTitle}>HOME</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/stadium_32px.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Match')}>
+          <NavMatch width="24" height="24" />
           <Text style={styles.iconTitle}>MATCH</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/jersey_24px.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Teams')}>
+          <NavTeam width="24" height="24" />
           <Text style={styles.iconTitle}>TEAM</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/shopping-cart.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Store')}>
+          <NavStore width="24" height="24" />
           <Text style={styles.iconTitle}>STORE</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -105,10 +146,52 @@ const styles = StyleSheet.create({
     height: 34,
     marginRight: 8,
   },
+
+  // Content
   contentWrapper: {
     flex: 1,
     backgroundColor: 'white',
+    padding: 20,
   },
+  playerWrapper: {
+    borderWidth: 1,
+    borderRadius: 10,
+    width: 352,
+    height: 120,
+    marginBottom: 20,
+  },
+  playerImage: {
+    backgroundColor: 'grey',
+    width: 352,
+    height: 120,
+    borderRadius: 10,
+    resizeMode: 'stretch',
+  },
+  playerName: {
+    position: 'absolute',
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    top: 70,
+    paddingHorizontal: 15,
+  },
+  kitNumber: {
+    position: 'absolute',
+    color: 'white',
+    fontSize: 34,
+    paddingTop: 12,
+    paddingHorizontal: 15,
+  },
+  position: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  space: {
+    height: 20,
+  },
+
+  // BottomNavigation
   navWrapper: {
     height: 58,
     backgroundColor: 'white',

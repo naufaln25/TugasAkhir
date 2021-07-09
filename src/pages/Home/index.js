@@ -1,7 +1,21 @@
-import React, {Component} from 'react';
-import {Text, StyleSheet, View, Image, ScrollView} from 'react-native';
+import React from 'react';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {NavMatch, NavStore, NavTeam} from '../../assets';
+import NavHome from '../../assets/logo/teams_tmlogo_tsx1530680365.png';
+import {Items, Link, NewsItem} from '../../components';
+import {colors} from '../../utills/colors';
 
-const Home = () => {
+const Home = ({navigation}) => {
+  const LinkToGo = screen => {
+    navigation.navigate(screen);
+  };
   return (
     <View style={{backgroundColor: 'grey', flex: 1}}>
       {/* Header */}
@@ -54,19 +68,21 @@ const Home = () => {
             showsHorizontalScrollIndicator={false}
             decelerationRate="fast"
             scrollEventThrottle={200}
-            pagingEnabled>
+            pagingEnabled
+            style={{paddingHorizontal: 20}}>
             <View
               style={{
                 backgroundColor: 'white',
-                width: 335,
+                width: 350,
                 height: 520,
-                margin: 30,
+                marginVertical: 20,
+                marginRight: 20,
                 borderRadius: 20,
               }}>
               <Image
                 source={require('../../assets/img/166397159_124444879652655_7974507247414517410_n.jpg')}
                 style={{
-                  width: 335,
+                  width: 350,
                   height: 520,
                   borderBottomLeftRadius: 20,
                   borderBottomRightRadius: 20,
@@ -92,15 +108,16 @@ const Home = () => {
             <View
               style={{
                 backgroundColor: 'white',
-                width: 335,
+                width: 350,
                 height: 520,
-                margin: 30,
+                marginVertical: 20,
+                marginRight: 20,
                 borderRadius: 20,
               }}>
               <Image
                 source={require('../../assets/img/166397159_124444879652655_7974507247414517410_n.jpg')}
                 style={{
-                  width: 335,
+                  width: 350,
                   height: 520,
                   borderBottomLeftRadius: 20,
                   borderBottomRightRadius: 20,
@@ -126,15 +143,16 @@ const Home = () => {
             <View
               style={{
                 backgroundColor: 'white',
-                width: 335,
+                width: 350,
                 height: 520,
-                margin: 30,
+                marginVertical: 20,
+                marginRight: 20,
                 borderRadius: 20,
               }}>
               <Image
                 source={require('../../assets/img/166397159_124444879652655_7974507247414517410_n.jpg')}
                 style={{
-                  width: 335,
+                  width: 350,
                   height: 520,
                   borderBottomLeftRadius: 20,
                   borderBottomRightRadius: 20,
@@ -269,237 +287,70 @@ const Home = () => {
           </ScrollView>
 
           {/* Bagian News */}
-          <View
-            style={{
-              marginBottom: 20,
-              borderTopWidth: 0.5,
-              borderTopColor: 'lightgrey',
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                marginTop: 15,
-                paddingHorizontal: 21,
-              }}>
-              <Text style={{fontSize: 20, fontWeight: 'bold'}}>NEWS</Text>
-              <Text style={{marginTop: 5}}>Show More</Text>
+          <View style={styles.itemWrapper}>
+            <View style={styles.itemTitle}>
+              <Text style={styles.title}>NEWS</Text>
+              <Link
+                onPress={() => LinkToGo('News')}
+                title="Show More"
+                style={styles.LinkToGo}
+              />
             </View>
-            <View
-              style={{
-                backgroundColor: 'grey',
-                width: 352,
-                height: 180,
-                marginRight: 20,
-                marginLeft: 20,
-                borderRadius: 15,
-                marginTop: 10,
-              }}
-            />
-            <View>
-              <Text
-                style={{
-                  fontSize: 16,
-                  marginTop: 10,
-                  marginBottom: 10,
-                  marginLeft: 25,
-                  marginRight: 25,
-                  fontWeight: 'bold',
-                }}>
-                Ini Judul Berita Lagi, Banyak amat yaa beritanya, masa isinya
-                berita doang
-              </Text>
-            </View>
-            <View
-              style={{
-                backgroundColor: 'grey',
-                width: 352,
-                height: 180,
-                marginRight: 20,
-                marginLeft: 20,
-                marginTop: 10,
-                borderRadius: 15,
-              }}
-            />
-            <View>
-              <Text
-                style={{
-                  fontSize: 16,
-                  marginTop: 10,
-                  marginBottom: 10,
-                  marginLeft: 25,
-                  marginRight: 25,
-                  fontWeight: 'bold',
-                }}>
-                Ini Judul Berita Lagi, Banyak amat yaa beritanya, masa isinya
-                berita doang
-              </Text>
-            </View>
+
+            <NewsItem title="Ini Judul 1" />
+            <NewsItem title="Ini Judul 1" />
+            <NewsItem title="Ini Judul 1" />
           </View>
 
           {/* Bagian Store Front */}
-          <View style={{marginBottom: 30}}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                paddingHorizontal: 21,
-              }}>
-              <Text style={{fontWeight: 'bold', fontSize: 20}}>STORE</Text>
-              <Text style={{marginTop: 5}}>Show More</Text>
+          <View style={styles.itemWrapper}>
+            <View style={styles.itemTitle}>
+              <Text style={styles.title}>STORE</Text>
+              <Link
+                onPress={() => LinkToGo('Store')}
+                title="Show More"
+                style={styles.LinkToGo}
+              />
             </View>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
               decelerationRate="fast"
-              scrollEventThrottle={200}
-              pagingEnabled>
-              <View
-                style={{
-                  backgroundColor: 'grey',
-                  width: 352,
-                  height: 180,
-                  marginRight: 20,
-                  marginLeft: 20,
-                  borderRadius: 15,
-                  marginTop: 10,
-                }}>
-                <Image />
-                <Text
-                  style={{
-                    color: 'white',
-                    fontSize: 18,
-                    fontWeight: 'bold',
-                    marginLeft: 15,
-                    position: 'relative',
-                    top: 130,
-                  }}>
-                  The New Home Shirt 2021
-                </Text>
-              </View>
-              <View
-                style={{
-                  backgroundColor: 'grey',
-                  width: 352,
-                  height: 180,
-                  marginRight: 20,
-                  marginLeft: 20,
-                  borderRadius: 15,
-                  marginTop: 10,
-                }}>
-                <Image />
-                <Text
-                  style={{
-                    color: 'white',
-                    fontSize: 18,
-                    fontWeight: 'bold',
-                    marginLeft: 15,
-                    position: 'relative',
-                    top: 130,
-                  }}>
-                  The New Away Shirt 2021
-                </Text>
-              </View>
-              <View
-                style={{
-                  backgroundColor: 'grey',
-                  width: 352,
-                  height: 180,
-                  marginRight: 20,
-                  marginLeft: 20,
-                  borderRadius: 15,
-                  marginTop: 10,
-                }}>
-                <Image />
-                <Text
-                  style={{
-                    color: 'white',
-                    fontSize: 18,
-                    fontWeight: 'bold',
-                    marginLeft: 15,
-                    position: 'relative',
-                    top: 130,
-                  }}>
-                  The New Training Kit 2021
-                </Text>
-              </View>
+              scrollEventThrottle={200}>
+              <Items title="NEW HOME KIT 20/21" />
+              <Items title="NEW AWAY KIT 20/21" />
+              <Items title="NEW THIRD KIT 20/21" />
             </ScrollView>
           </View>
         </View>
       </ScrollView>
 
       {/* Bottom Navigation */}
-      <View
-        style={{
-          height: 58,
-          backgroundColor: 'white',
-          flexDirection: 'row',
-          borderTopWidth: 0.5,
-          borderTopColor: 'lightgrey',
-        }}>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Image
-            source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
-            style={{width: 24, height: 24}}
-          />
-          <Text
-            style={{
-              fontSize: 10,
-              color: 'black',
-              marginTop: 4,
-              fontWeight: 'bold',
-            }}>
-            HOME
-          </Text>
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Image
-            source={require('../../assets/logo/stadium_32px.png')}
-            style={{width: 28, height: 28}}
-          />
-          <Text style={{fontSize: 10, color: '#545454', marginTop: 4}}>
-            MATCH
-          </Text>
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Image
-            source={require('../../assets/logo/jersey_24px.png')}
-            style={{width: 26, height: 26}}
-          />
-          <Text style={{fontSize: 10, color: '#545454', marginTop: 4}}>
-            TEAM
-          </Text>
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Image
-            source={require('../../assets/logo/shopping-cart.png')}
-            style={{width: 26, height: 26}}
-          />
-          <Text style={{fontSize: 10, color: '#545454', marginTop: 4}}>
-            STORE
-          </Text>
-        </View>
+      <View style={styles.navWrapper}>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Home')}>
+          <Image source={NavHome} style={styles.iconNav} />
+          <Text style={styles.iconTitle}>HOME</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Match')}>
+          <NavMatch width="24" height="24" />
+          <Text style={styles.iconTitle}>MATCH</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Teams')}>
+          <NavTeam width="24" height="24" />
+          <Text style={styles.iconTitle}>TEAM</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Store')}>
+          <NavStore width="24" height="24" />
+          <Text style={styles.iconTitle}>STORE</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -507,4 +358,44 @@ const Home = () => {
 
 export default Home;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  itemTitle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 5,
+  },
+  title: {fontWeight: 'bold', fontSize: 20},
+  itemWrapper: {
+    padding: 20,
+    marginVertical: 10,
+  },
+  LinkToGo: {
+    color: colors.dark,
+    top: 5,
+  },
+
+  // Bottom Navigation
+  navWrapper: {
+    height: 58,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    borderTopWidth: 0.5,
+    borderTopColor: 'lightgrey',
+  },
+  buttonWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  iconNav: {
+    width: 24,
+    height: 24,
+  },
+  iconTitle: {
+    fontSize: 10,
+    color: 'black',
+    marginTop: 4,
+    fontWeight: 'bold',
+  },
+});

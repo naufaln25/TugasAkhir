@@ -1,7 +1,19 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View, Image} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {NavMatch, NavStore, NavTeam} from '../../assets';
+import NavHome from '../../assets/logo/teams_tmlogo_tsx1530680365.png';
 
-const News = () => {
+const News = ({navigation}) => {
+  const LinkToGo = screen => {
+    navigation.navigate(screen);
+  };
   return (
     <View style={styles.wrapper}>
       {/* Header */}
@@ -13,7 +25,7 @@ const News = () => {
           />
         </View>
         <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>ALL MATCH</Text>
+          <Text style={styles.headerTitle}>NEWS</Text>
         </View>
         <View style={styles.headerRight}>
           <Image
@@ -24,42 +36,98 @@ const News = () => {
       </View>
 
       {/* Content */}
-      <ScrollView>
-        <View style={styles.contentWrapper}>
-          <Text>Ini Content</Text>
-        </View>
+      <ScrollView style={styles.contentWrapper}>
+        <TouchableOpacity style={styles.newsWrappper}>
+          <View style={styles.imageNews}>
+            <Image />
+          </View>
+          <Text style={styles.titleNews}>
+            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.newsWrappper}>
+          <View style={styles.imageNews}>
+            <Image />
+          </View>
+          <Text style={styles.titleNews}>
+            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.newsWrappper}>
+          <View style={styles.imageNews}>
+            <Image />
+          </View>
+          <Text style={styles.titleNews}>
+            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.newsWrappper}>
+          <View style={styles.imageNews}>
+            <Image />
+          </View>
+          <Text style={styles.titleNews}>
+            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.newsWrappper}>
+          <View style={styles.imageNews}>
+            <Image />
+          </View>
+          <Text style={styles.titleNews}>
+            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.newsWrappper}>
+          <View style={styles.imageNews}>
+            <Image />
+          </View>
+          <Text style={styles.titleNews}>
+            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.newsWrappper}>
+          <View style={styles.imageNews}>
+            <Image />
+          </View>
+          <Text style={styles.titleNews}>
+            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
+          </Text>
+        </TouchableOpacity>
+        <View style={styles.space} />
       </ScrollView>
 
       {/* Bottom Navigation */}
       <View style={styles.navWrapper}>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
-            style={styles.iconNav}
-          />
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Home')}>
+          <Image source={NavHome} style={styles.iconNav} />
           <Text style={styles.iconTitle}>HOME</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/stadium_32px.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Match')}>
+          <NavMatch width="24" height="24" />
           <Text style={styles.iconTitle}>MATCH</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/jersey_24px.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Teams')}>
+          <NavTeam width="24" height="24" />
           <Text style={styles.iconTitle}>TEAM</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/shopping-cart.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Store')}>
+          <NavStore width="24" height="24" />
           <Text style={styles.iconTitle}>STORE</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -105,10 +173,39 @@ const styles = StyleSheet.create({
     height: 34,
     marginRight: 8,
   },
+
+  // Content
   contentWrapper: {
     flex: 1,
     backgroundColor: 'white',
+    padding: 20,
   },
+  newsWrappper: {
+    borderWidth: 1,
+    borderRadius: 10,
+    width: 352,
+    height: 180,
+    marginBottom: 20,
+  },
+  imageNews: {
+    backgroundColor: 'grey',
+    width: 352,
+    height: 180,
+    borderRadius: 10,
+  },
+  titleNews: {
+    position: 'absolute',
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    top: 100,
+    paddingHorizontal: 15,
+  },
+  space: {
+    height: 20,
+  },
+
+  // Bottom Navigation
   navWrapper: {
     height: 58,
     backgroundColor: 'white',

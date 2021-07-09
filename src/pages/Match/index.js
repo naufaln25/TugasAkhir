@@ -1,7 +1,20 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View, Image} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {NavMatch, NavStore, NavTeam} from '../../assets';
+import NavHome from '../../assets/logo/teams_tmlogo_tsx1530680365.png';
+import {MatchItem} from '../../components/atoms';
 
-const Match = () => {
+const Match = ({navigation}) => {
+  const LinkToGo = screen => {
+    navigation.navigate(screen);
+  };
   return (
     <View style={styles.wrapper}>
       {/* Header */}
@@ -24,42 +37,73 @@ const Match = () => {
       </View>
 
       {/* Content */}
-      <ScrollView>
-        <View style={styles.contentWrapper}>
-          <Text>Ini Content</Text>
-        </View>
+      <ScrollView
+        style={styles.contentWrapper}
+        showsVerticalScrollIndicator={false}
+        decelerationRate="fast"
+        scrollEventThrottle={200}>
+        <MatchItem
+          title="Pro Futsal League, Matchday 15 | 25/06/21"
+          score1="2"
+          score2="0"
+          ket="FT"
+        />
+
+        <MatchItem
+          title="Pro Futsal League, Matchday 15 | 25/06/21"
+          score1="2"
+          score2="0"
+          ket="FT"
+        />
+
+        <MatchItem
+          title="Pro Futsal League, Matchday 15 | 25/06/21"
+          score1="-"
+          score2="-"
+          ket="15.00"
+        />
+
+        <MatchItem
+          title="Pro Futsal League, Matchday 15 | 25/06/21"
+          score1="-"
+          score2="-"
+          ket="15.00"
+        />
+
+        <MatchItem
+          title="Pro Futsal League, Matchday 15 | 25/06/21"
+          score1="-"
+          score2="-"
+          ket="15.00"
+        />
       </ScrollView>
 
       {/* Bottom Navigation */}
       <View style={styles.navWrapper}>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
-            style={styles.iconNav}
-          />
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Home')}>
+          <Image source={NavHome} style={styles.iconNav} />
           <Text style={styles.iconTitle}>HOME</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/stadium_32px.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Match')}>
+          <NavMatch width="24" height="24" />
           <Text style={styles.iconTitle}>MATCH</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/jersey_24px.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Teams')}>
+          <NavTeam width="24" height="24" />
           <Text style={styles.iconTitle}>TEAM</Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <Image
-            source={require('../../assets/logo/shopping-cart.png')}
-            style={styles.iconNav}
-          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.buttonWrapper}
+          onPress={() => LinkToGo('Store')}>
+          <NavStore width="24" height="24" />
           <Text style={styles.iconTitle}>STORE</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -108,7 +152,26 @@ const styles = StyleSheet.create({
   contentWrapper: {
     flex: 1,
     backgroundColor: 'white',
+    padding: 20,
   },
+  matchWrapper: {
+    borderColor: 'lightslategrey',
+    borderWidth: 1,
+    width: 352,
+    height: 130,
+    borderRadius: 15,
+    marginBottom: 20,
+  },
+  matchTitle: {textAlign: 'center', marginTop: 5},
+  match: {
+    paddingHorizontal: 40,
+    paddingVertical: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  teamIcon: {width: 50, height: 50, backgroundColor: 'grey'},
+  score: {fontSize: 22, fontWeight: 'bold'},
   navWrapper: {
     height: 58,
     backgroundColor: 'white',
