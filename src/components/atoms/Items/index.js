@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
-    margin: 15,
+    margin: 20,
     position: 'absolute',
-    top: 100,
+    bottom: 0,
   },
 });

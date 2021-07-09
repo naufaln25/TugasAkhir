@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {NavMatch, NavStore, NavTeam} from '../../assets';
 import NavHome from '../../assets/logo/teams_tmlogo_tsx1530680365.png';
-import {Items, Link, NewsItem} from '../../components';
+import {Items, Link, NewsItem, MatchItem} from '../../components';
 import {colors} from '../../utills/colors';
 
 const Home = ({navigation}) => {
@@ -17,51 +17,29 @@ const Home = ({navigation}) => {
     navigation.navigate(screen);
   };
   return (
-    <View style={{backgroundColor: 'grey', flex: 1}}>
+    <View style={styles.wrapper}>
       {/* Header */}
-      <View
-        style={{
-          height: 54,
-          backgroundColor: '#0d7250',
-          flexDirection: 'row',
-        }}>
-        <View
-          style={{
-            width: 54,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+      <View style={styles.headerWrapper}>
+        <View style={styles.headerDrawer}>
           <Image
             source={require('../../assets/logo/menu-white.png')}
-            style={{width: 22, height: 22, marginLeft: 6}}
+            style={styles.iconDrawer}
           />
         </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}>
-            VAMOS FC
-          </Text>
+        <View style={styles.headerCenter}>
+          <Text style={styles.headerTitle}>ALL MATCH</Text>
         </View>
-        <View
-          style={{
-            width: 54,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+        <View style={styles.headerRight}>
           <Image
             source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
-            style={{width: 34, height: 34, marginRight: 8}}
+            style={styles.headerImage}
           />
         </View>
       </View>
 
       {/* Content */}
       <ScrollView>
-        <View style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={styles.contentWrapper}>
           {/* Headlines */}
           <ScrollView
             horizontal
@@ -69,107 +47,35 @@ const Home = ({navigation}) => {
             decelerationRate="fast"
             scrollEventThrottle={200}
             pagingEnabled
-            style={{paddingHorizontal: 20}}>
-            <View
-              style={{
-                backgroundColor: 'white',
-                width: 350,
-                height: 520,
-                marginVertical: 20,
-                marginRight: 20,
-                borderRadius: 20,
-              }}>
+            style={styles.headWrapper}>
+            <View style={styles.headlineWrapper}>
               <Image
                 source={require('../../assets/img/166397159_124444879652655_7974507247414517410_n.jpg')}
-                style={{
-                  width: 350,
-                  height: 520,
-                  borderBottomLeftRadius: 20,
-                  borderBottomRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                  borderTopRightRadius: 20,
-                }}
+                style={styles.headlineImage}
               />
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 24,
-                  fontWeight: 'bold',
-                  marginLeft: 20,
-                  marginRight: 20,
-                  position: 'absolute',
-                  top: 350,
-                }}>
+              <Text style={styles.headlineTitle}>
                 Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang Pertandingan
                 Pertama
               </Text>
             </View>
 
-            <View
-              style={{
-                backgroundColor: 'white',
-                width: 350,
-                height: 520,
-                marginVertical: 20,
-                marginRight: 20,
-                borderRadius: 20,
-              }}>
+            <View style={styles.headlineWrapper}>
               <Image
                 source={require('../../assets/img/166397159_124444879652655_7974507247414517410_n.jpg')}
-                style={{
-                  width: 350,
-                  height: 520,
-                  borderBottomLeftRadius: 20,
-                  borderBottomRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                  borderTopRightRadius: 20,
-                }}
+                style={styles.headlineImage}
               />
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 24,
-                  fontWeight: 'bold',
-                  marginLeft: 20,
-                  marginRight: 20,
-                  position: 'absolute',
-                  top: 350,
-                }}>
+              <Text style={styles.headlineTitle}>
                 Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang Pertandingan
                 Pertama
               </Text>
             </View>
 
-            <View
-              style={{
-                backgroundColor: 'white',
-                width: 350,
-                height: 520,
-                marginVertical: 20,
-                marginRight: 20,
-                borderRadius: 20,
-              }}>
+            <View style={styles.headlineWrapper}>
               <Image
                 source={require('../../assets/img/166397159_124444879652655_7974507247414517410_n.jpg')}
-                style={{
-                  width: 350,
-                  height: 520,
-                  borderBottomLeftRadius: 20,
-                  borderBottomRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                  borderTopRightRadius: 20,
-                }}
+                style={styles.headlineImage}
               />
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 24,
-                  fontWeight: 'bold',
-                  marginLeft: 20,
-                  marginRight: 20,
-                  position: 'absolute',
-                  top: 350,
-                }}>
+              <Text style={styles.headlineTitle}>
                 Ini Judul Berita 1 Vamos FC Mataram, Berita Tentang Pertandingan
                 Pertama
               </Text>
@@ -182,108 +88,28 @@ const Home = ({navigation}) => {
             showsHorizontalScrollIndicator={false}
             decelerationRate="fast"
             scrollEventThrottle={200}
-            pagingEnabled>
-            <View
-              style={{
-                borderColor: 'lightslategrey',
-                borderWidth: 1,
-                width: 352,
-                height: 130,
-                marginRight: 20,
-                marginLeft: 20,
-                borderRadius: 15,
-                marginTop: 10,
-              }}>
-              <Text style={{textAlign: 'center', marginTop: 5}}>
-                Pro Futsal League, Matchday 15 | 25/06/21
-              </Text>
-              <View
-                style={{
-                  paddingHorizontal: 40,
-                  paddingVertical: 15,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}>
-                <View style={{width: 50, height: 50, backgroundColor: 'grey'}}>
-                  <Image />
-                </View>
-                <Text style={{fontSize: 22, fontWeight: 'bold'}}>2</Text>
-                <Text>FT</Text>
-                <Text style={{fontSize: 22, fontWeight: 'bold'}}>2</Text>
-                <View style={{width: 50, height: 50, backgroundColor: 'grey'}}>
-                  <Image />
-                </View>
-              </View>
-            </View>
+            pagingEnabled
+            style={styles.matcWrapper}>
+            <MatchItem
+              title="Pro Futsal League, Matchday 15 | 25/06/21"
+              score1="2"
+              score2="0"
+              ket="FT"
+            />
 
-            <View
-              style={{
-                borderColor: 'lightslategrey',
-                borderWidth: 1,
-                width: 352,
-                height: 130,
-                marginRight: 20,
-                marginLeft: 20,
-                borderRadius: 15,
-                marginTop: 10,
-              }}>
-              <Text style={{textAlign: 'center', marginTop: 5}}>
-                Pro Futsal League, Matchday 15 | 25/06/21
-              </Text>
-              <View
-                style={{
-                  paddingHorizontal: 40,
-                  paddingVertical: 15,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}>
-                <View style={{width: 50, height: 50, backgroundColor: 'grey'}}>
-                  <Image />
-                </View>
-                <Text style={{fontSize: 22, fontWeight: 'bold'}}>3</Text>
-                <Text>FT</Text>
-                <Text style={{fontSize: 22, fontWeight: 'bold'}}>1</Text>
-                <View style={{width: 50, height: 50, backgroundColor: 'grey'}}>
-                  <Image />
-                </View>
-              </View>
-            </View>
+            <MatchItem
+              title="Pro Futsal League, Matchday 15 | 25/06/21"
+              score1="2"
+              score2="0"
+              ket="FT"
+            />
 
-            <View
-              style={{
-                borderColor: 'lightslategrey',
-                borderWidth: 1,
-                width: 352,
-                height: 130,
-                marginRight: 20,
-                marginLeft: 20,
-                borderRadius: 15,
-                marginTop: 10,
-              }}>
-              <Text style={{textAlign: 'center', marginTop: 5}}>
-                Pro Futsal League, Matchday 15 | 25/06/21
-              </Text>
-              <View
-                style={{
-                  paddingHorizontal: 40,
-                  paddingVertical: 15,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}>
-                <View style={{width: 50, height: 50, backgroundColor: 'grey'}}>
-                  <Image />
-                </View>
-                <Text style={{fontSize: 22, fontWeight: 'bold'}} />
-                <Text>Sabtu, 26/06/21</Text>
-                <Text style={{fontSize: 22, fontWeight: 'bold'}} />
-                <View style={{width: 50, height: 50, backgroundColor: 'grey'}}>
-                  <Image />
-                </View>
-              </View>
-            </View>
+            <MatchItem
+              title="Pro Futsal League, Matchday 15 | 25/06/21"
+              score1="-"
+              score2="-"
+              ket="15.00"
+            />
           </ScrollView>
 
           {/* Bagian News */}
@@ -359,6 +185,48 @@ const Home = ({navigation}) => {
 export default Home;
 
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: 'grey',
+    flex: 1,
+  },
+  headerWrapper: {
+    height: 54,
+    backgroundColor: '#0d7250',
+    flexDirection: 'row',
+  },
+  headerDrawer: {
+    width: 54,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  iconDrawer: {
+    width: 22,
+    height: 22,
+    marginLeft: 6,
+  },
+  headerCenter: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  headerRight: {
+    width: 54,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerImage: {
+    width: 34,
+    height: 34,
+    marginRight: 8,
+  },
+
+  // Content
+  contentWrapper: {flex: 1, backgroundColor: 'white'},
   itemTitle: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -373,6 +241,35 @@ const styles = StyleSheet.create({
   LinkToGo: {
     color: colors.dark,
     top: 5,
+  },
+  headWrapper: {paddingHorizontal: 20},
+  headlineWrapper: {
+    backgroundColor: 'white',
+    width: 350,
+    height: 520,
+    marginVertical: 20,
+    marginRight: 20,
+    borderRadius: 20,
+  },
+  headlineImage: {
+    width: 350,
+    height: 520,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  headlineTitle: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    padding: 20,
+    position: 'absolute',
+    bottom: 30,
+  },
+  matcWrapper: {
+    paddingHorizontal: 20,
+    marginTop: 20,
   },
 
   // Bottom Navigation

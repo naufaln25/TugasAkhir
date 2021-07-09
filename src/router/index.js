@@ -10,6 +10,9 @@ import {
   Teams,
   Store,
   News,
+  MatchContent,
+  StoreContent,
+  NewsContent,
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -61,6 +64,21 @@ const Router = () => {
       <Stack.Screen
         name="News"
         component={News}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MatchContent"
+        component={MatchContent}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="StoreContent"
+        component={StoreContent}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="NewsContent"
+        component={NewsContent}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

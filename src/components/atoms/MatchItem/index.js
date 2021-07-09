@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     height: 130,
     borderRadius: 15,
     marginBottom: 20,
+    marginRight: 15,
   },
   matchTitle: {textAlign: 'center', marginTop: 5},
   match: {

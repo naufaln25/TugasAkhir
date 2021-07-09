@@ -51,7 +51,10 @@ const Store = ({navigation}) => {
             decelerationRate="fast"
             scrollEventThrottle={200}
             style={styles.sectionWrapper}>
-            <Items title="NEW HOME KIT 20/21" />
+            <Items
+              title="NEW HOME KIT 20/21"
+              onPress={() => LinkToGo('StoreContent')}
+            />
             <Items title="NEW AWAY KIT 20/21" />
             <Items title="NEW THIRD KIT 20/21" />
           </ScrollView>

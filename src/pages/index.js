@@ -7,5 +7,21 @@ import Match from './Match';
 import News from './News';
 import Store from './Store';
 import Teams from './Teams';
+import MatchContent from './MatchContent';
+import NewsContent from './NewsContent';
+import StoreContent from './StoreContent';
 
-export {Splash, Login, Register, WelcomeAuth, Home, Match, News, Store, Teams};
+export {
+  Splash,
+  Login,
+  Register,
+  WelcomeAuth,
+  Home,
+  Match,
+  News,
+  Store,
+  Teams,
+  MatchContent,
+  StoreContent,
+  NewsContent,
+};
