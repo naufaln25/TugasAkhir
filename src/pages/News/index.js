@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -9,129 +9,105 @@ import {
 } from 'react-native';
 import {NavMatch, NavStore, NavTeam} from '../../assets';
 import NavHome from '../../assets/logo/teams_tmlogo_tsx1530680365.png';
+import FIREBASE from '../../config/FIREBASE';
 
-const News = ({navigation}) => {
-  const LinkToGo = screen => {
-    navigation.navigate(screen);
-  };
-  return (
-    <View style={styles.wrapper}>
-      {/* Header */}
-      <View style={styles.headerWrapper}>
-        <View style={styles.headerDrawer}>
-          <Image
-            source={require('../../assets/logo/menu-white.png')}
-            style={styles.iconDrawer}
-          />
+export class News extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      news: {},
+      newsKey: [],
+    };
+  }
+
+  componentDidMount() {
+    FIREBASE.database()
+      .ref('dataBerita')
+      .once('value', querySnapShot => {
+        let data = querySnapShot.val() ? querySnapShot.val() : {};
+        let newsItem = {...data};
+
+        this.setState({
+          news: newsItem,
+          newsKey: Object.keys(newsItem),
+        });
+      });
+  }
+
+  render() {
+    const {news, newsKey} = this.state;
+    return (
+      <View style={styles.wrapper}>
+        {/* Header */}
+        <View style={styles.headerWrapper}>
+          <View style={styles.headerDrawer} />
+          <View style={styles.headerCenter}>
+            <Text style={styles.headerTitle}>NEWS</Text>
+          </View>
+          <View style={styles.headerRight}>
+            <Image
+              source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
+              style={styles.headerImage}
+            />
+          </View>
         </View>
-        <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>NEWS</Text>
-        </View>
-        <View style={styles.headerRight}>
-          <Image
-            source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
-            style={styles.headerImage}
-          />
+
+        {/* Content */}
+        <ScrollView style={styles.contentWrapper}>
+          {newsKey.length > 0 ? (
+            newsKey.map(key => (
+              <TouchableOpacity
+                style={styles.newsWrappper}
+                onPress={() =>
+                  this.props.navigation.navigate('NewsContent', {id: key})
+                }>
+                <View>
+                  <Image
+                    style={styles.imageNews}
+                    source={require('../../assets/img/news/b4.jpg')}
+                  />
+                </View>
+                <Text style={styles.titleNews}>{news[key].judul}</Text>
+              </TouchableOpacity>
+            ))
+          ) : (
+            <Text>Match Tidak Tersedia</Text>
+          )}
+          <View style={styles.space} />
+        </ScrollView>
+
+        {/* Bottom Navigation */}
+        <View style={styles.navWrapper}>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Home')}>
+            <Image source={NavHome} style={styles.iconNav} />
+            <Text style={styles.iconTitle}>HOME</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Match')}>
+            <NavMatch width="24" height="24" />
+            <Text style={styles.iconTitle}>MATCH</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Teams')}>
+            <NavTeam width="24" height="24" />
+            <Text style={styles.iconTitle}>TEAM</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Store')}>
+            <NavStore width="24" height="24" />
+            <Text style={styles.iconTitle}>STORE</Text>
+          </TouchableOpacity>
         </View>
       </View>
-
-      {/* Content */}
-      <ScrollView style={styles.contentWrapper}>
-        <TouchableOpacity style={styles.newsWrappper}>
-          <View style={styles.imageNews}>
-            <Image />
-          </View>
-          <Text style={styles.titleNews}>
-            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.newsWrappper}>
-          <View style={styles.imageNews}>
-            <Image />
-          </View>
-          <Text style={styles.titleNews}>
-            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.newsWrappper}>
-          <View style={styles.imageNews}>
-            <Image />
-          </View>
-          <Text style={styles.titleNews}>
-            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.newsWrappper}>
-          <View style={styles.imageNews}>
-            <Image />
-          </View>
-          <Text style={styles.titleNews}>
-            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.newsWrappper}>
-          <View style={styles.imageNews}>
-            <Image />
-          </View>
-          <Text style={styles.titleNews}>
-            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.newsWrappper}>
-          <View style={styles.imageNews}>
-            <Image />
-          </View>
-          <Text style={styles.titleNews}>
-            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.newsWrappper}>
-          <View style={styles.imageNews}>
-            <Image />
-          </View>
-          <Text style={styles.titleNews}>
-            Ini Judul Berita 1, Awas No. 2 bikin Kamu Terkejut
-          </Text>
-        </TouchableOpacity>
-        <View style={styles.space} />
-      </ScrollView>
-
-      {/* Bottom Navigation */}
-      <View style={styles.navWrapper}>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Home')}>
-          <Image source={NavHome} style={styles.iconNav} />
-          <Text style={styles.iconTitle}>HOME</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Match')}>
-          <NavMatch width="24" height="24" />
-          <Text style={styles.iconTitle}>MATCH</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Teams')}>
-          <NavTeam width="24" height="24" />
-          <Text style={styles.iconTitle}>TEAM</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Store')}>
-          <NavStore width="24" height="24" />
-          <Text style={styles.iconTitle}>STORE</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   wrapper: {

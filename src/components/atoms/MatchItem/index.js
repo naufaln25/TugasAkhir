@@ -1,30 +1,33 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 
 export default function index({
   title,
-  onPress,
+  tanggal,
   score1,
   score2,
   team1,
   team2,
   ket,
+  id,
 }) {
   return (
-    <TouchableOpacity style={styles.matchWrapper} onPress={onPress}>
-      <Text style={styles.matchTitle}>{title}</Text>
+    <View style={styles.matchWrapper}>
+      <Text style={styles.matchTitle}>
+        {title} | {tanggal}
+      </Text>
       <View style={styles.match}>
-        <View style={styles.teamIcon}>
-          <Image source={team1} />
+        <View>
+          <Image source={{uri: team1}} style={styles.teamIcon} />
         </View>
         <Text style={styles.score}>{score1}</Text>
         <Text>{ket}</Text>
         <Text style={styles.score}>{score2}</Text>
-        <View style={styles.teamIcon}>
-          <Image source={team2} />
+        <View>
+          <Image source={{uri: team2}} style={styles.teamIcon} />
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
@@ -46,6 +49,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  teamIcon: {width: 50, height: 50, backgroundColor: 'grey'},
+  teamIcon: {width: 50, height: 50},
   score: {fontSize: 22, fontWeight: 'bold'},
 });

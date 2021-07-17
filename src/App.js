@@ -1,10 +1,9 @@
-import React from 'react';
-import {Text, StyleSheet, View, Image, ScrollView} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
 import 'react-native-gesture-handler';
-import Router from './router';
 import {Provider} from 'react-redux';
 import {store} from './redux';
+import Router from './router';
 
 const App = () => {
   return (
@@ -15,7 +14,5 @@ const App = () => {
     </Provider>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;

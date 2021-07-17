@@ -10,6 +10,7 @@ import Teams from './Teams';
 import MatchContent from './MatchContent';
 import NewsContent from './NewsContent';
 import StoreContent from './StoreContent';
+import Player from './Player';
 
 export {
   Splash,
@@ -24,4 +25,5 @@ export {
   MatchContent,
   StoreContent,
   NewsContent,
+  Player,
 };

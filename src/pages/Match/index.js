@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -10,104 +10,105 @@ import {
 import {NavMatch, NavStore, NavTeam} from '../../assets';
 import NavHome from '../../assets/logo/teams_tmlogo_tsx1530680365.png';
 import {MatchItem} from '../../components/atoms';
+import FIREBASE from '../../config/FIREBASE';
 
-const Match = ({navigation}) => {
-  const LinkToGo = screen => {
-    navigation.navigate(screen);
-  };
-  return (
-    <View style={styles.wrapper}>
-      {/* Header */}
-      <View style={styles.headerWrapper}>
-        <View style={styles.headerDrawer}>
-          <Image
-            source={require('../../assets/logo/menu-white.png')}
-            style={styles.iconDrawer}
-          />
+export class Match extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      match: {},
+      matchKey: [],
+    };
+  }
+
+  componentDidMount() {
+    FIREBASE.database()
+      .ref('dataMatch')
+      .once('value', querySnapShot => {
+        let data = querySnapShot.val() ? querySnapShot.val() : {};
+        let matchItem = {...data};
+
+        this.setState({
+          match: matchItem,
+          matchKey: Object.keys(matchItem),
+        });
+      });
+  }
+
+  render() {
+    const {match, matchKey} = this.state;
+    return (
+      <View style={styles.wrapper}>
+        {/* Header */}
+        <View style={styles.headerWrapper}>
+          <View style={styles.headerDrawer} />
+          <View style={styles.headerCenter}>
+            <Text style={styles.headerTitle}>ALL MATCH</Text>
+          </View>
+          <View style={styles.headerRight}>
+            <Image
+              source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
+              style={styles.headerImage}
+            />
+          </View>
         </View>
-        <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>ALL MATCH</Text>
-        </View>
-        <View style={styles.headerRight}>
-          <Image
-            source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
-            style={styles.headerImage}
-          />
+        {/* Content */}
+        <ScrollView
+          style={styles.contentWrapper}
+          showsVerticalScrollIndicator={false}
+          decelerationRate="fast"
+          scrollEventThrottle={200}>
+          {matchKey.length > 0 ? (
+            matchKey.map(key => (
+              <MatchItem
+                key={key}
+                title={match[key].namaMatch}
+                tanggal={match[key].tanggal}
+                score1={match[key].skor1}
+                score2={match[key].skor2}
+                team1={match[key].tim1}
+                team2={match[key].tim2}
+                ket={match[key].ket}
+                id={key}
+              />
+            ))
+          ) : (
+            <Text>Match Tidak Tersedia</Text>
+          )}
+        </ScrollView>
+
+        {/* Bottom Navigation */}
+        <View style={styles.navWrapper}>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Home')}>
+            <Image source={NavHome} style={styles.iconNav} />
+            <Text style={styles.iconTitle}>HOME</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Match')}>
+            <NavMatch width="24" height="24" />
+            <Text style={styles.iconTitle}>MATCH</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Teams')}>
+            <NavTeam width="24" height="24" />
+            <Text style={styles.iconTitle}>TEAM</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Store')}>
+            <NavStore width="24" height="24" />
+            <Text style={styles.iconTitle}>STORE</Text>
+          </TouchableOpacity>
         </View>
       </View>
-
-      {/* Content */}
-      <ScrollView
-        style={styles.contentWrapper}
-        showsVerticalScrollIndicator={false}
-        decelerationRate="fast"
-        scrollEventThrottle={200}>
-        <MatchItem
-          title="Pro Futsal League, Matchday 15 | 25/06/21"
-          score1="2"
-          score2="0"
-          ket="FT"
-        />
-
-        <MatchItem
-          title="Pro Futsal League, Matchday 15 | 25/06/21"
-          score1="2"
-          score2="0"
-          ket="FT"
-        />
-
-        <MatchItem
-          title="Pro Futsal League, Matchday 15 | 25/06/21"
-          score1="-"
-          score2="-"
-          ket="15.00"
-        />
-
-        <MatchItem
-          title="Pro Futsal League, Matchday 15 | 25/06/21"
-          score1="-"
-          score2="-"
-          ket="15.00"
-        />
-
-        <MatchItem
-          title="Pro Futsal League, Matchday 15 | 25/06/21"
-          score1="-"
-          score2="-"
-          ket="15.00"
-        />
-      </ScrollView>
-
-      {/* Bottom Navigation */}
-      <View style={styles.navWrapper}>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Home')}>
-          <Image source={NavHome} style={styles.iconNav} />
-          <Text style={styles.iconTitle}>HOME</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Match')}>
-          <NavMatch width="24" height="24" />
-          <Text style={styles.iconTitle}>MATCH</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Teams')}>
-          <NavTeam width="24" height="24" />
-          <Text style={styles.iconTitle}>TEAM</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Store')}>
-          <NavStore width="24" height="24" />
-          <Text style={styles.iconTitle}>STORE</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   wrapper: {

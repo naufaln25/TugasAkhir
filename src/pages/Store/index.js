@@ -1,132 +1,125 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
+  Image,
   ScrollView,
   StyleSheet,
   Text,
-  View,
-  Image,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import {NavMatch, NavStore, NavTeam} from '../../assets';
 import NavHome from '../../assets/logo/teams_tmlogo_tsx1530680365.png';
 import {Items} from '../../components';
+import FIREBASE from '../../config/FIREBASE';
 
-const Store = ({navigation}) => {
-  const LinkToGo = screen => {
-    navigation.navigate(screen);
-  };
-  return (
-    <View style={styles.wrapper}>
-      {/* Header */}
-      <View style={styles.headerWrapper}>
-        <View style={styles.headerDrawer}>
-          <Image
-            source={require('../../assets/logo/menu-white.png')}
-            style={styles.iconDrawer}
-          />
-        </View>
-        <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>STORE</Text>
-        </View>
-        <View style={styles.headerRight}>
-          <Image
-            source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
-            style={styles.headerImage}
-          />
-        </View>
-      </View>
+export class Store extends Component {
+  constructor(props) {
+    super(props);
 
-      {/* Content */}
-      <ScrollView style={styles.contentWrapper}>
-        <View style={styles.shopHeadline}>
-          <Image />
-          <Text style={styles.headlineTitle}>NEW HOME KIT 2020/2021</Text>
-        </View>
+    this.state = {
+      store: {},
+      storeKey: [],
+    };
+  }
 
-        <View style={styles.storeWrapper}>
-          <Text style={styles.storeTitle}>NEW KIT 2020/2021</Text>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            decelerationRate="fast"
-            scrollEventThrottle={200}
-            style={styles.sectionWrapper}>
-            <Items
-              title="NEW HOME KIT 20/21"
-              onPress={() => LinkToGo('StoreContent')}
+  componentDidMount() {
+    FIREBASE.database()
+      .ref('dataApparel')
+      .once('value', querySnapShot => {
+        let data = querySnapShot.val() ? querySnapShot.val() : {};
+        let storeItem = {...data};
+
+        this.setState({
+          store: storeItem,
+          storeKey: Object.keys(storeItem),
+        });
+      });
+  }
+
+  render() {
+    const {store, storeKey} = this.state;
+    return (
+      <View style={styles.wrapper}>
+        {/* Header */}
+        <View style={styles.headerWrapper}>
+          <View style={styles.headerDrawer} />
+          <View style={styles.headerCenter}>
+            <Text style={styles.headerTitle}>STORE</Text>
+          </View>
+          <View style={styles.headerRight}>
+            <Image
+              source={require('../../assets/logo/teams_tmlogo_tsx1530680365.png')}
+              style={styles.headerImage}
             />
-            <Items title="NEW AWAY KIT 20/21" />
-            <Items title="NEW THIRD KIT 20/21" />
-          </ScrollView>
-
-          <Text style={styles.storeTitle}>SPECIAL EDITION</Text>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            decelerationRate="fast"
-            scrollEventThrottle={200}
-            style={styles.sectionWrapper}>
-            <Items title="T-SHIRT CHAMPIONS 2018" />
-            <Items title="HOME KIT SPECIAL EDITION (Threepeat)" />
-            <Items title="NEW THIRD KIT 20/21" />
-          </ScrollView>
-
-          <Text style={styles.storeTitle}>KIT 2019/2020</Text>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            decelerationRate="fast"
-            scrollEventThrottle={200}
-            style={styles.sectionWrapper}>
-            <Items title="HOME KIT 19/20" />
-            <Items title="AWAY KIT 19/20" />
-            <Items title="THIRD KIT 19/20" />
-          </ScrollView>
-
-          <Text style={styles.storeTitle}>AFC KIT 2019</Text>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            decelerationRate="fast"
-            scrollEventThrottle={200}
-            style={styles.sectionWrapper}>
-            <Items title="AFC HOME KIT 2019" />
-            <Items title="AFC AWAY KIT 2019" />
-            <Items title="AFC THIRD KIT 2019" />
-          </ScrollView>
+          </View>
         </View>
-      </ScrollView>
 
-      {/* Bottom Navigation */}
-      <View style={styles.navWrapper}>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Home')}>
-          <Image source={NavHome} style={styles.iconNav} />
-          <Text style={styles.iconTitle}>HOME</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Match')}>
-          <NavMatch width="24" height="24" />
-          <Text style={styles.iconTitle}>MATCH</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Teams')}>
-          <NavTeam width="24" height="24" />
-          <Text style={styles.iconTitle}>TEAM</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonWrapper}
-          onPress={() => LinkToGo('Store')}>
-          <NavStore width="24" height="24" />
-          <Text style={styles.iconTitle}>STORE</Text>
-        </TouchableOpacity>
+        {/* Content */}
+        <ScrollView style={styles.contentWrapper}>
+          <View>
+            <Image
+              source={require('../../assets/img/vamosfcmataram_20210710_3.jpg')}
+              style={styles.shopHeadline}
+            />
+            <Text style={styles.headlineTitle}>NEW HOME KIT 2020/2021</Text>
+          </View>
+          <View style={styles.storeWrapper}>
+            <Text style={styles.storeTitle}>ALL ITEM</Text>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              decelerationRate="fast"
+              scrollEventThrottle={200}
+              style={styles.sectionWrapper}>
+              {storeKey.length > 0 ? (
+                storeKey.map(key => (
+                  <Items
+                    key={key}
+                    title={store[key].namaItem}
+                    onPress={() =>
+                      this.props.navigation.navigate('StoreContent', {id: key})
+                    }
+                    id={key}
+                    source={require('../../assets/img/vamosfcmataram_20210710_1.jpg')}
+                  />
+                ))
+              ) : (
+                <Text>Item Tidak Tersedia</Text>
+              )}
+            </ScrollView>
+          </View>
+        </ScrollView>
+
+        {/* Bottom Navigation */}
+        <View style={styles.navWrapper}>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Home')}>
+            <Image source={NavHome} style={styles.iconNav} />
+            <Text style={styles.iconTitle}>HOME</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Match')}>
+            <NavMatch width="24" height="24" />
+            <Text style={styles.iconTitle}>MATCH</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Teams')}>
+            <NavTeam width="24" height="24" />
+            <Text style={styles.iconTitle}>TEAM</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonWrapper}
+            onPress={() => this.props.navigation.navigate('Store')}>
+            <NavStore width="24" height="24" />
+            <Text style={styles.iconTitle}>STORE</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -177,6 +170,8 @@ const styles = StyleSheet.create({
   shopHeadline: {
     backgroundColor: 'grey',
     height: 280,
+    width: '100%',
+    resizeMode: 'cover',
   },
   headlineTitle: {
     color: 'white',
@@ -191,8 +186,9 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
   },
   storeTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   sectionWrapper: {
     marginBottom: 25,

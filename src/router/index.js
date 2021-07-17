@@ -13,6 +13,7 @@ import {
   MatchContent,
   StoreContent,
   NewsContent,
+  Player,
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -79,6 +80,11 @@ const Router = () => {
       <Stack.Screen
         name="NewsContent"
         component={NewsContent}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Player"
+        component={Player}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
